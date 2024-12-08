@@ -1,0 +1,32 @@
+name: Deploy Streamlit App
+
+on:
+  push:
+    branches:
+      - main  # Workflow sẽ chạy khi có thay đổi trên nhánh main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # Sử dụng Ubuntu cho runner
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2  # Checkout code từ repository
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'  # Cấu hình phiên bản Python
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip  # Cập nhật pip
+          pip install -r requirements.txt  # Cài đặt các dependencies từ requirements.txt
+
+      - name: Run Streamlit App
+        run: |
+          streamlit run app.py  # Chạy ứng dụng Streamlit của bạn
+          
+      - name: Deploy to Render  # Đưa ứng dụng lên Render hoặc Heroku
+        run: |
+          git remote add render https://git@render.com/your_username/your_app.git
+          git push render main  # Deploy lên Render

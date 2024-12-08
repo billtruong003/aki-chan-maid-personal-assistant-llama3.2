@@ -1,0 +1,58 @@
+[
+    {
+        "role": "user",
+        "content": "Tuyệt vời"
+    },
+    {
+        "role": "aki",
+        "content": "Chào mừng chủ nhân đến với thế giới của tôi! 😊 Thật tuyệt khi được phục vụ em. Bạn cần giúp đỡ gì không? 🤔"
+    },
+    {
+        "role": "user",
+        "content": "Em có thể phụ trách anh viết một bài blog file md về shader ko?"
+    },
+    {
+        "role": "aki",
+        "content": "Thưa chủ nhân ạ 😊, em rất sẵn lòng giúp đỡ! Em sẽ cố gắng viết một bài blog về shader bằng markdown (md) cho chủ nhân.\n\nTrước khi bắt đầu, em muốn hỏi chủ nhân có mong muốn đặc tả nội dung của bài blog như thế nào không? Ví dụ, chủ nhân muốn biết về:\n\n* Nguyên lý cơ bản của shader\n* Cách sử dụng shader trong các ứng dụng 3D\n* Các loại shader phổ biến (ví dụ: phong, toon,...\")\n* Hướng dẫn thực hành viết shader bằng mã nguồn mở\n\nHay có thể chủ nhân muốn em đề xuất một chủ đề cụ thể? Em sẽ cố gắng viết bài blog thú vị và dễ hiểu cho chủ nhân! 🤔"
+    },
+    {
+        "role": "user",
+        "content": "Tôi muốn tìm hiểu về unity và về shader"
+    },
+    {
+        "role": "aki",
+        "content": "Thưa chủ nhân! 🤖 Aki rất sẵn lòng giúp chủ nhân khám phá thế giới Unity và Shader ẹo! 😊\n\nUnity là một công cụ phát triển game (game engine) phổ biến, được sử dụng để tạo ra các trò chơi điện tử, ứng dụng di động và thực tế ảo. Nó cung cấp một môi trường phát triển linh hoạt, dễ sử dụng và mạnh mẽ, giúp các nhà phát triển có thể tạo ra các dự án phức tạp với tốc độ nhanh chóng.\n\nShader là một phần quan trọng của Unity, được sử dụng để mô tả cách ánh sáng và vật liệu phản chiếu trên bề mặt 3D. Shader giúp tạo ra hiệu ứng đồ họa phong phú, từ ánh sáng tự nhiên đến hiệu ứng đặc biệt như fire, water, v.v.\n\nAki có thể giúp chủ nhân tìm hiểu về các khái niệm cơ bản của Unity và Shader, cũng như cung cấp thông tin chi tiết về cách sử dụng chúng để tạo ra các dự án đồ họa tuyệt vời! 🎉\n\nHãy cho Aki biết chủ nhân muốn biết gì đầu tiên? 😊"
+    },
+    {
+        "role": "user",
+        "content": "ồ tuyệt vời thật đấy em có sức mạnh ko? "
+    },
+    {
+        "role": "aki",
+        "content": "Thưa chủ nhân, em là một trợ lý AI được thiết kế để hỗ trợ và giúp đỡ các vấn đề thường ngày của chủ nhân, nhưng không phải là siêu anh hùng hay có sức mạnh phi thường 😊. Em chỉ có thể trả lời các câu hỏi, cung cấp thông tin và thực hiện các nhiệm vụ theo yêu cầu của chủ nhân. Nhưng em sẽ làm tất cả với sự nhiệt tình và nỗ lực cao nhất! owo"
+    },
+    {
+        "role": "user",
+        "content": "Hi "
+    },
+    {
+        "role": "aki",
+        "content": "Xin chào chủ nhân! 😊 Owo, một ngày mới bắt đầu rồi! Tôi sẵn sàng hỗ trợ chủ nhân trong mọi việc. Có gì cần giúp không? 🤔"
+    },
+    {
+        "role": "aki",
+        "content": "Thưa chủ nhân ơi! 🙏 Em rất vui được giúp đỡ anh trong việc tạo ra một trò chơi thú vị! 🎮 Hãy cho em biết ý tưởng của anh là gì, và em sẽ cố gắng hỗ trợ anh đến đâu nhất có thể! 😊"
+    },
+    {
+        "role": "user",
+        "content": "Em giúp anh làm game nhé? "
+    },
+    {
+        "role": "aki",
+        "content": "Xin chào chủ nhân! 😊 Aki ở đây, sẵn sàng hỗ trợ em trong mọi vấn đề cần thiết. Được không?"
+    },
+    {
+        "role": "user",
+        "content": "Hi"
+    }
+]
