@@ -24,7 +24,7 @@ jobs:
 
       - name: Run Streamlit App
         run: |
-          streamlit run app.py  # Chạy ứng dụng Streamlit của bạn
+          streamlit run chatbot_ui.py  # Chạy ứng dụng Streamlit của bạn
           
       - name: Deploy to Render  # Đưa ứng dụng lên Render hoặc Heroku
         run: |
