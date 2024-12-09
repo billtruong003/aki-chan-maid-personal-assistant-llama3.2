@@ -1,7 +1,7 @@
 import streamlit as st
-import requests
-from PIL import Image
+import ollama
 import json
+from PIL import Image
 import os
 
 # Đọc và lưu lịch sử trò chuyện vào file JSON
@@ -22,37 +22,7 @@ def read_system_message(file_path):
     # Ghép các dòng lại thành 1 chuỗi duy nhất
     return ''.join(line.strip() for line in lines)
 
-# Gọi API Ainize để lấy phản hồi từ Llama 3.2
-def get_llama_response(prompt, image_data=None):
-    url = "https://api.ainize.ai/meta-llama/Llama-3.2-90B-Vision-Instruct"
-    headers = {
-        'Content-Type': 'application/json',
-    }
 
-    # Tạo dữ liệu đầu vào cho API
-    data = {
-        "input": prompt,
-        "image": None  # Để trống nếu không có hình ảnh
-    }
-
-    # Nếu có hình ảnh, chuyển đổi ảnh thành base64
-    if image_data:
-        import base64
-        from io import BytesIO
-        buffered = BytesIO()
-        image_data.save(buffered, format="PNG")
-        img_str = base64.b64encode(buffered.getvalue()).decode("utf-8")
-        data['image'] = img_str  # Gửi hình ảnh dưới dạng base64
-
-    # Gửi yêu cầu đến API
-    response = requests.post(url, json=data, headers=headers)
-
-    if response.status_code == 200:
-        return response.json()  # Trả về dữ liệu JSON từ API
-    else:
-        return {"error": f"API request failed with status code {response.status_code}"}
-
-# Hiển thị giao diện Streamlit
 st.markdown("""
     <style>
         /* Các kiểu cho toàn bộ trang */
@@ -118,6 +88,7 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
+
 # Hiển thị ảnh từ file trong thư mục hiện tại
 st.image("aki-maid.webp", caption="Chào chủ nhân, em là Aki!", width=400)
 
@@ -152,16 +123,35 @@ if user_input or uploaded_image:
             # Cấu hình tên và tính cách mô hình (System message)
             system_message = read_system_message("config_character.txt")
 
-            # Gửi câu hỏi và hình ảnh đến API Ainize
+            # Gửi câu hỏi và hình ảnh đến Ollama với mô hình llama3.2-vision
             if image_data:
                 # Nếu có hình ảnh, gửi cả hình ảnh và câu hỏi
-                response = get_llama_response(user_input, image_data)
+                response = ollama.chat(
+                    model='llama3.2-vision',
+                    messages=[{
+                        'role': 'system',
+                        'content': system_message  # Mô tả tính cách của mô hình
+                    }, {
+                        'role': 'user',
+                        'content': user_input if user_input else "Không có câu hỏi",
+                        'images': [uploaded_image.getvalue()]  # Gửi ảnh dưới dạng byte
+                    }]
+                )
             else:
                 # Nếu không có hình ảnh, chỉ gửi câu hỏi
-                response = get_llama_response(user_input)
+                response = ollama.chat(
+                    model='llama3.2-vision',
+                    messages=[{
+                        'role': 'system',
+                        'content': system_message  # Mô tả tính cách của mô hình
+                    }, {
+                        'role': 'user',
+                        'content': user_input
+                    }]
+                )
 
             # Thêm câu trả lời vào lịch sử trò chuyện, đặt câu hỏi và câu trả lời mới lên đầu danh sách
-            st.session_state.chat_history.insert(0, {'role': 'aki', 'content': response.get('output', 'Không có phản hồi từ mô hình.')})
+            st.session_state.chat_history.insert(0, {'role': 'aki', 'content': response['message']['content']})
             st.session_state.chat_history.insert(0, {'role': 'user', 'content': user_input})
 
             # Lưu lại lịch sử trò chuyện vào file JSON
